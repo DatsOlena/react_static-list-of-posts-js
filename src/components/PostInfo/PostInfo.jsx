@@ -17,6 +17,6 @@ export const PostInfo = ({ post }) => (
     <p className="PostInfo__body">{post.body}</p>
 
     <hr />
-    <CommentList comments={post.comments} key={post.id} />
+    <CommentList comments={post.comments} />
   </div>
 );

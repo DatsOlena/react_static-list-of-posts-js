@@ -5,10 +5,15 @@ import postsFromServer from './api/posts.json';
 import commentsFromServer from './api/comments.json';
 import usersFromServer from './api/users.json';
 
+const fallbackUser = {
+  name: 'Unknown user',
+  email: 'unknown@example.com',
+};
+
 const posts = postsFromServer.map(post => ({
   ...post,
   user: usersFromServer.find(user => user.id === post.userId),
-  comments: commentsFromServer.filter(comment => comment.postId === post.id),
+  comments: commentsFromServer.filter(comment => comment.postId === post.id) || fallbackUser,
 }));
 
 export const App = () => (

@@ -13,7 +13,9 @@ const fallbackUser = {
 const posts = postsFromServer.map(post => ({
   ...post,
   user: usersFromServer.find(user => user.id === post.userId),
-  comments: commentsFromServer.filter(comment => comment.postId === post.id) || fallbackUser,
+  comments:
+    commentsFromServer.filter(comment => comment.postId === post.id) ||
+    fallbackUser,
 }));
 
 export const App = () => (
